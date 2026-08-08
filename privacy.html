@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aira — Privacy Policy</title>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.7;max-width:900px;margin:0 auto;padding:32px 20px;color:#1f2937;background:#f8fafc}
+main{background:white;padding:36px;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06)}
+h1,h2{color:#111827} h1{margin-top:0} .muted{color:#64748b} a{color:#4f46e5}
+li{margin:.45em 0} .box{background:#f1f5f9;padding:16px;border-radius:10px}
+table{width:100%;border-collapse:collapse;margin:16px 0}th,td{border:1px solid #e5e7eb;padding:10px;text-align:left;vertical-align:top}th{background:#f8fafc}
+</style>
+</head>
+<body><main>
+<h1>Aira — Privacy Policy</h1>
+<p class="muted"><strong>Effective Date:</strong> August 8, 2026</p>
+
+<div class="box"><strong>Plain-language summary:</strong> Aira processes Discord identifiers and the messages you send to its AI features. When the chatbot feature is enabled, Aira stores conversation memory temporarily and stores a separate chat-history record. AI requests are sent to Groq for inference. You can request deletion of data associated with your Discord account.</div>
+
+<h2>1. Who This Policy Applies To</h2>
+<p>This Privacy Policy explains how the operator of Aira (“we”, “us”, “our”) processes information when you interact with the Aira Discord application.</p>
+<p>Aira is an independent third-party application and is not operated, sponsored, endorsed, or affiliated with Discord Inc.</p>
+
+<h2>2. Information We Process</h2>
+<table>
+<tr><th>Category</th><th>Examples</th><th>Purpose</th></tr>
+<tr><td>Discord identifiers</td><td>Discord User ID, Guild/Server ID, channel ID</td><td>Identify the user/server context and provide features.</td></tr>
+<tr><td>Messages and AI content</td><td>Your message to Aira and Aira's generated response</td><td>Provide AI conversations and maintain requested conversation history.</td></tr>
+<tr><td>Conversation memory</td><td>User/assistant messages and timestamps</td><td>Provide short-term conversational context.</td></tr>
+<tr><td>Personal AI personality</td><td>The personality/preferences text you enter</td><td>Customize Aira's responses for you in a particular server.</td></tr>
+<tr><td>Server chatbot settings</td><td>Whether the chatbot is enabled and the configured chatbot channel ID</td><td>Operate server-specific chatbot functionality.</td></tr>
+<tr><td>Technical information</td><td>Timestamps and operational/error logs</td><td>Security, troubleshooting, reliability, and maintenance.</td></tr>
+</table>
+
+<h2>3. Discord Data Access</h2>
+<p>Because Aira runs on Discord, Discord may provide Aira with data available to a bot based on the permissions, intents, installation context, and interactions involved. Depending on Discord's platform controls and the Aira configuration, this can include basic profile information, server membership information, message metadata, and message content when Aira needs it to respond.</p>
+<p>Aira is configured to ignore messages authored by bots and does not intentionally collect message content from direct messages because the current AI feature requires a server context.</p>
+<p>Discord separately describes baseline bot data access and app data access in its documentation. See <a href="https://support.discord.com/hc/en-us/articles/7933951485975-Visibility-of-Bot-Data-Access">Discord's Bot Data Access information</a>.</p>
+
+<h2>4. How Aira Uses Information</h2>
+<ul>
+<li>to receive and answer AI requests;</li>
+<li>to maintain short-term conversation context;</li>
+<li>to apply a user's saved personal AI personality;</li>
+<li>to operate server-specific chatbot settings;</li>
+<li>to provide conversation statistics where supported;</li>
+<li>to secure, troubleshoot, maintain, and improve the reliability of the Service;</li>
+<li>to comply with applicable law and valid legal requests.</li>
+</ul>
+
+<h2>5. AI Processing by Groq</h2>
+<p>Aira uses Groq's API for AI inference. When an AI request is made, the content necessary to generate the response may be transmitted to Groq. This can include the current message, relevant conversation context, and the applicable personality instructions/preferences.</p>
+<p>Groq states that, for its inference API, customer data is not retained by default, although limited retention can occur for system reliability or abuse monitoring unless Zero Data Retention controls apply. Groq also states that usage metadata is retained. Groq's own policies and controls govern Groq's processing as a third-party service.</p>
+<p>See <a href="https://console.groq.com/docs/your-data">Groq's “Your Data in GroqCloud” documentation</a> and <a href="https://groq.com/privacy-policy">Groq's Privacy Policy</a> for current details.</p>
+
+<h2>6. What Aira Stores Locally</h2>
+<p>The current Aira implementation uses a local SQLite database. In the AI cog, it stores:</p>
+<ul>
+<li>Discord User ID and Guild/Server ID;</li>
+<li>conversation memory containing user/assistant messages and timestamps;</li>
+<li>chat-history records containing the user's message, Aira's response, and a timestamp;</li>
+<li>personal AI personality text and creation/update timestamps;</li>
+<li>server chatbot settings, including enabled status and chatbot channel ID.</li>
+</ul>
+
+<h2>7. Retention</h2>
+<h3>Conversation memory</h3>
+<p>The current implementation automatically removes conversation-memory entries older than approximately 24 hours. This memory is used to provide recent context to Aira.</p>
+<h3>Chat-history records</h3>
+<p>The current implementation also writes a separate chat-history record for chatbot conversations. Unlike conversation memory, the current code does not automatically expire these records after 24 hours. We retain them only as long as reasonably necessary for the Service, legal obligations, security, and legitimate operational needs, and will delete them when no longer needed or when a valid deletion request requires deletion.</p>
+<h3>Personal personality</h3>
+<p>A personal personality remains stored until you clear it through the available Aira command or request its deletion.</p>
+<h3>Roleplay</h3>
+<p>The current roleplay history is kept in application memory while the roleplay session is active and is not intentionally written to the AI database by the roleplay flow described above. Operational logs or third-party AI processing may still occur as necessary to provide the feature.</p>
+
+<h2>8. Your Choices and Deletion Requests</h2>
+<p>You can clear your short-term conversation memory with Aira's <code>/ai conversation-clear</code> command and clear your saved personal personality with <code>/ai personality-clear</code>, where those commands are available.</p>
+<p>Because the current implementation keeps a separate chatbot-history table, using <code>/ai conversation-clear</code> does not necessarily remove that separate history record. To request deletion of all Aira data associated with you, contact the operator using the email below. We will verify the request as reasonably necessary and delete applicable data within a reasonable period, subject to legal or security obligations that require limited retention.</p>
+<p>Depending on your location and applicable law, you may also have rights to access, correct, delete, restrict, or object to certain processing, or to receive other privacy rights. These rights are not absolute and may be subject to legal exceptions.</p>
+
+<h2>9. Security</h2>
+<p>We use reasonable technical and organizational measures appropriate to the nature of the Service. However, no internet service, database, API, or electronic transmission can be guaranteed to be completely secure.</p>
+<p>Do not send passwords, Discord tokens, API keys, payment-card information, or other secrets to Aira.</p>
+
+<h2>10. Data Sharing</h2>
+<p>We do not sell your Aira conversation data as a business model. Information may be disclosed:</p>
+<ul>
+<li>to Discord as part of operating an application on Discord;</li>
+<li>to Groq as necessary to provide AI inference;</li>
+<li>to hosting, infrastructure, security, or other service providers that help operate Aira, where applicable;</li>
+<li>when required by law, legal process, or a valid government request;</li>
+<li>when reasonably necessary to protect users, the Service, or legal rights.</li>
+</ul>
+
+<h2>11. International Processing</h2>
+<p>Aira and its third-party providers may process information in countries other than your own. For example, Groq states that its customer data may be retained in Google Cloud Platform infrastructure located in the United States. Where applicable, we will use legally recognized safeguards for international transfers.</p>
+
+<h2>12. Children's Privacy</h2>
+<p>Aira is not intended to bypass Discord's age requirements. We do not knowingly request personal information from children in violation of applicable law. If you believe a child has provided information to Aira in circumstances where it should not have been collected, contact us so we can review and delete it where appropriate.</p>
+
+<h2>13. Changes to This Policy</h2>
+<p>We may update this Privacy Policy to reflect changes to Aira, third-party services, legal requirements, or data practices. The latest version will be published at this URL and will show its effective date.</p>
+
+<h2>14. Contact and Privacy Requests</h2>
+<p><strong>Operator:</strong> [YOUR NAME OR LEGAL ENTITY]</p>
+<p><strong>Privacy/support email:</strong> [YOUR SUPPORT/PRIVACY EMAIL]</p>
+<p>For a deletion or access request, include enough information for us to identify the relevant Discord account, such as your Discord User ID. Do not send your Discord password, bot token, or API key.</p>
+
+<h2>15. Related Policies</h2>
+<ul>
+<li><a href="terms.html">Aira Terms of Service</a></li>
+<li><a href="https://groq.com/privacy-policy">Groq Privacy Policy</a></li>
+<li><a href="https://console.groq.com/docs/your-data">Groq Data Controls</a></li>
+<li><a href="https://discord.com/privacy">Discord Privacy Policy</a></li>
+</ul>
+</main></body></html>
